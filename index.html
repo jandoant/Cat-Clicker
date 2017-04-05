@@ -9,7 +9,21 @@
     <img id="js-cat-image" src="./img/cat.jpg" alt="Image of a super cute cat">
     <p>The Cat Image was clicked <span id="js-display-count">0</span> times.</p>
   </body>
-  <script type="text/javascript">    
+  <script type="text/javascript">
+
+    //Find Elements in the document
+    var clickTarget = document.getElementById("js-cat-image");
+    var countDisplay = document.getElementById("js-display-count");
+
+    //Set Initial Counter to Zero
+    var counter = 0;
+
+    clickTarget.addEventListener('click', function(){
+      //increment Counter by 1 each time the clickTarget is clicked
+      counter++;
+      //Update the Current Value of the Count-Display
+      countDisplay.innerText=counter;
+    });
 
   </script>
 </html>
