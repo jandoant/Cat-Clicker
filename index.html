@@ -15,12 +15,12 @@
         <div class="cat-image-box">
           <img id="js-cat-image-1" src="./img/cat1.jpg" alt="Image of a super cute cat">
           <h3>Gonzo</h3>
-          <p>Gonzo was clicked <span id="js-display-count">0</span> times.</p>
+          <p>Gonzo was clicked <span id="js-display-count-1">0</span> times.</p>
         </div>
         <div class="cat-image-box">
           <img id="js-cat-image-2" src="./img/cat2.jpg" alt="Image of another super cute cat">
           <h3>Emma</h3>
-          <p>Emma was clicked <span id="js-display-count">0</span> times.</p>
+          <p>Emma was clicked <span id="js-display-count-2">0</span> times.</p>
         </div>
       </div>
 
@@ -28,19 +28,35 @@
   </body>
   <script type="text/javascript">
 
-    //Find Elements in the document
-    var clickTarget = document.getElementById("js-cat-image");
-    var countDisplay = document.getElementById("js-display-count");
+    //Array of Spans to display the count for the particular Image
+    let countDisplays = [];
+    //Array of Counts for every Image
+    let counter = [];
 
-    //Set Initial Counter to Zero
-    var counter = 0;
+    //Find Images in the Document
+    var clickTargets = document.images;
 
-    clickTarget.addEventListener('click', function(){
-      //increment Counter by 1 each time the clickTarget is clicked
-      counter++;
-      //Update the Current Value of the Count-Display
-      countDisplay.innerText=counter;
-    });
+    for(let i = 0; i<clickTargets.length; i++){
+
+      //Find Display-Elements in the document
+      let countDisplayId="js-display-count-"+(i+1);
+      countDisplays[i] = document.getElementById(countDisplayId);
+      //Set Initial Counter of each Image to Zero
+      counter[i] = 0;
+
+      //Add Click Listener to each Image, increment the counter and display them
+      clickTargets[i].addEventListener('click', function(){
+        counter[i]++;
+        countDisplays[i].innerText=counter[i];
+      });
+
+
+    }
+
+
+
+
+
 
   </script>
 </html>
